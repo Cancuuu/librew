@@ -21,7 +21,7 @@ const KeyboardButton = ({
   onLongPress?: (T: TKeyboardValue) => void;
 }) => (
   <Pressable
-    className="p-4"
+    className="w-20 h-20 justify-center items-center"
     onPress={() => {
       Haptics.selectionAsync();
       onPress(value);
