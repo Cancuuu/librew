@@ -9,15 +9,15 @@ import { TKeyboardValue } from "../../types";
 import { ACTION, NUMBER } from "../../constants";
 
 const DEFAULT_WHOLE_AMOUNT = "0";
-const DEFAULT_DECIMAL_AMOUNT = "00";
+const DEFAULT_DECIMAL_AMOUNT = "0";
 
 export default function Page() {
   const [wholeAmount, setWholeAmount] = useState(DEFAULT_WHOLE_AMOUNT);
   const [decimalAmount, setDecimalAmount] = useState(DEFAULT_DECIMAL_AMOUNT);
+  const [enableComma, setEnableComma] = useState(false);
 
   const displayWholeAmount = useMemo(() => {
     let formatted = wholeAmount;
-
     if (wholeAmount.length >= 4 && wholeAmount.length <= 6) {
       let slicedAmount = wholeAmount.slice(0, -3) + "." + wholeAmount.slice(-3);
       formatted = slicedAmount;
@@ -30,9 +30,9 @@ export default function Page() {
         wholeAmount.slice(-6, -3) +
         "." +
         wholeAmount.slice(-3);
-
       formatted = slicedAmount;
     }
+
     return formatted;
   }, [wholeAmount]);
 
@@ -53,21 +53,26 @@ export default function Page() {
         }
       }
 
-      if (
-        value.value === "REMOVE_ALL" &&
-        wholeAmount !== DEFAULT_WHOLE_AMOUNT &&
-        decimalAmount !== DEFAULT_DECIMAL_AMOUNT
-      ) {
-        setWholeAmount(DEFAULT_WHOLE_AMOUNT);
-        setDecimalAmount(DEFAULT_DECIMAL_AMOUNT);
+      if (value.value === ",") {
+        setEnableComma(true);
       }
     }
+
     if (value.type === NUMBER) {
-      if (wholeAmount.length > 6) return;
-      if (wholeAmount === DEFAULT_WHOLE_AMOUNT || wholeAmount === "0") {
-        setWholeAmount(String(value.value));
+      if (enableComma) {
+        if (decimalAmount.length > 1) return;
+        if (decimalAmount === DEFAULT_DECIMAL_AMOUNT || decimalAmount === "0") {
+          setDecimalAmount(String(value.value));
+        } else {
+          setDecimalAmount((prevAmount) => prevAmount + String(value.value));
+        }
       } else {
-        setWholeAmount((prevAmount) => prevAmount + String(value.value));
+        if (wholeAmount.length > 6) return;
+        if (wholeAmount === DEFAULT_WHOLE_AMOUNT || wholeAmount === "0") {
+          setWholeAmount(String(value.value));
+        } else {
+          setWholeAmount((prevAmount) => prevAmount + String(value.value));
+        }
       }
     }
   };
@@ -89,7 +94,7 @@ export default function Page() {
             </Text>
             <Text
               style={{
-                fontFamily: "OverpassMono_400Regular",
+                fontFamily: "Roboto_400Regular",
                 fontSize: 24,
                 color: "#272C26",
                 marginTop: 18,
@@ -100,7 +105,10 @@ export default function Page() {
           </View>
         </View>
         <View className="justify-center items-center">
-          <Keyboard proccessInputAmount={proccessInputAmount} />
+          <Keyboard
+            enableComma={enableComma}
+            proccessInputAmount={proccessInputAmount}
+          />
           <View className="w-20 mt-12 mb-8 items-center">
             <Pressable
               onPress={() =>

@@ -7,6 +7,7 @@ import { ACTION, NUMBER } from "../../constants";
 
 interface IKeyboard {
   proccessInputAmount: (value: TKeyboardValue) => void;
+  enableComma: boolean;
 }
 
 const KeyboardButton = ({
@@ -32,7 +33,7 @@ const KeyboardButton = ({
   </Pressable>
 );
 
-const Keyboard = ({ proccessInputAmount }: IKeyboard) => {
+const Keyboard = ({ proccessInputAmount, enableComma }: IKeyboard) => {
   return (
     <View className="w-full">
       <View className="flex-row w-full justify-around items-center">
@@ -105,13 +106,17 @@ const Keyboard = ({ proccessInputAmount }: IKeyboard) => {
         />
       </View>
       <View className="flex-row w-full justify-around items-center">
-        <KeyboardButton
-          value={{
-            type: ACTION,
-            value: ",",
-          }}
-          onPress={(value) => proccessInputAmount(value)}
-        />
+        {enableComma ? (
+          <View className="w-20 h-20"></View>
+        ) : (
+          <KeyboardButton
+            value={{
+              type: ACTION,
+              value: ",",
+            }}
+            onPress={(value) => proccessInputAmount(value)}
+          />
+        )}
         <KeyboardButton
           value={{
             type: NUMBER,
