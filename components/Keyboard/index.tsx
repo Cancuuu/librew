@@ -1,8 +1,8 @@
+import React from "react";
 import { Pressable, Text, View } from "react-native";
 import * as Haptics from "expo-haptics";
 import { Feather } from "@expo/vector-icons";
-import { Title } from "../../components/Text";
-import { TAction, TKeyboardValue, TNumber } from "../../types";
+import { TKeyboardValue } from "../../types";
 import { ACTION, NUMBER } from "../../constants";
 
 interface IKeyboard {
@@ -29,7 +29,19 @@ const KeyboardButton = ({
     }}
     onLongPress={() => onLongPress}
   >
-    {icon ? icon : <Title text={value.value?.toString()} />}
+    {icon ? (
+      icon
+    ) : (
+      <Text
+        style={{
+          fontFamily: "Saira_400Regular",
+          fontSize: 48,
+          color: "#FAFF00",
+        }}
+      >
+        {value.value}
+      </Text>
+    )}
   </Pressable>
 );
 
@@ -39,7 +51,7 @@ const Keyboard = ({ proccessInputAmount, enableComma }: IKeyboard) => {
       <View className="flex-row w-full justify-around items-center">
         <KeyboardButton
           value={{
-            type: ACTION,
+            type: NUMBER,
             value: 1,
           }}
           onPress={(value) => proccessInputAmount(value)}
@@ -129,11 +141,12 @@ const Keyboard = ({ proccessInputAmount, enableComma }: IKeyboard) => {
             type: ACTION,
             value: "REMOVE",
           }}
-          icon={<Feather name="delete" size={28} color="black" />}
+          icon={<Feather name="delete" size={28} color="#FAFF00" />}
           onPress={(value) => proccessInputAmount(value)}
           onLongPress={() => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
             // proccessInputAmount();
+            // @todo onLongPress delete the whole and decimal value
           }}
         />
       </View>

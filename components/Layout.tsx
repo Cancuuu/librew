@@ -12,6 +12,6 @@ export default function Layout(props: ILayout) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#9FFC39",
+    backgroundColor: "#282828",
   },
 });

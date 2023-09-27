@@ -7,6 +7,12 @@ import {
   OverpassMono_400Regular,
 } from "@expo-google-fonts/overpass-mono";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
+import {
+  Saira_300Light,
+  Saira_400Regular,
+  Saira_500Medium,
+  Saira_600SemiBold,
+} from "@expo-google-fonts/saira";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -18,8 +24,10 @@ export const unstable_settings = {
 
 export default function Layout() {
   let [fontsLoaded, fontError] = useFonts({
-    OverpassMono_400Regular,
-    Roboto_400Regular,
+    Saira_300Light,
+    Saira_400Regular,
+    Saira_500Medium,
+    Saira_600SemiBold,
   });
 
   if (!fontsLoaded && !fontError) {

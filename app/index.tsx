@@ -1,30 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, Pressable } from "react-native";
 import { Link } from "expo-router";
-import Layout from "../components/Layout";
+import HomeLayout from "../components/HomeLayout";
 
 export default function Page() {
   return (
-    <Layout>
-      <View className="flex-1 justify-center items-center">
-        <Text
-          className="text-[#272C26]"
-          style={{ fontFamily: "OverpassMono_400Regular", fontSize: 42 }}
-        >
-          M4H
-        </Text>
-        <Text
-          className="text-[#272C26]"
-          style={{ fontFamily: "OverpassMono_400Regular", fontSize: 18 }}
-        >
-          ME$$AGING FOR HOLDERS
-        </Text>
-        <View className="flex-row w-full justify-center mt-4">
-          <LinkButton title="create wallet" href="/create" />
-          <LinkButton title="import wallet" href="/create" />
-        </View>
+    <HomeLayout>
+      <Text
+        style={{
+          fontFamily: "Saira_500Medium",
+          fontSize: 64,
+          color: "#FAFF00",
+        }}
+      >
+        LIBREW
+      </Text>
+      <View className="flex-row w-full justify-center">
+        <LinkButton title="Create wallet" href="/create" />
+        <LinkButton title="Import wallet" href="/create" />
       </View>
-    </Layout>
+    </HomeLayout>
   );
 }
 
@@ -47,11 +42,15 @@ const LinkButton = ({ title, href }: ICircleButton) => (
 
         elevation: 5,
       }}
-      className="bg-[#FEFA8F] w-44 h-10 rounded-full justify-center items-center mt-4 mx-2"
+      className="bg-[#FAFF00] w-44 h-10 rounded-full justify-center items-center mt-4 mx-2"
     >
       <Text
         className="text-[#272C26]"
-        style={{ fontFamily: "OverpassMono_400Regular", fontSize: 18 }}
+        style={{
+          fontFamily: "Saira_500Medium",
+          fontSize: 20,
+          color: "#19181E",
+        }}
       >
         {title}
       </Text>

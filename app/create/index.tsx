@@ -36,6 +36,8 @@ export default function Page() {
     return formatted;
   }, [wholeAmount]);
 
+  // @todo remove that value.value shit and think another name mfer
+
   const proccessInputAmount = (value: TKeyboardValue) => {
     if (value.type === ACTION) {
       if (value.value === "REMOVE") {
@@ -51,6 +53,19 @@ export default function Page() {
         } else {
           setWholeAmount((prevAmount) => prevAmount.slice(0, -1));
         }
+
+        // if (
+        //   decimalAmount.length === 1 ||
+        //   decimalAmount === "" ||
+        //   decimalAmount === null ||
+        //   decimalAmount === undefined ||
+        //   decimalAmount === " " ||
+        //   decimalAmount === DEFAULT_WHOLE_AMOUNT
+        // ) {
+        //   setDecimalAmount(DEFAULT_WHOLE_AMOUNT);
+        // } else {
+        //   setDecimalAmount((prevAmount) => prevAmount.slice(0, -1));
+        // }
       }
 
       if (value.value === ",") {
@@ -81,22 +96,22 @@ export default function Page() {
     <Layout>
       <View className="flex-1 justify-around w-full">
         <View className="flex-grow w-full flex-row justify-center items-center mt-48">
-          <FontAwesome name="dollar" size={24} color="#272C26" />
+          <FontAwesome name="dollar" size={24} color="#FAFF00" />
           <View className="flex-row">
             <Text
               style={{
-                fontFamily: "Roboto_400Regular",
+                fontFamily: "Saira_500Medium",
                 fontSize: displayWholeAmount.length > 6 ? 80 : 96,
-                color: "#272C26",
+                color: "#FAFF00",
               }}
             >
               {displayWholeAmount}
             </Text>
             <Text
               style={{
-                fontFamily: "Roboto_400Regular",
+                fontFamily: "",
                 fontSize: 24,
-                color: "#272C26",
+                color: "#FAFF00",
                 marginTop: 18,
               }}
             >
@@ -114,9 +129,9 @@ export default function Page() {
               onPress={() =>
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
               }
-              className="bg-[#272C26] w-60 items-center rounded-full p-1"
+              className="bg-[#FAFF00] w-60 items-center rounded-full p-1"
             >
-              <Paragraph text="send" color={"#FFF"} />
+              <Paragraph text="SEND" color={"#272C26"} />
             </Pressable>
           </View>
         </View>
