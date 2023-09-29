@@ -2,8 +2,6 @@ import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
 import { Link } from "expo-router";
 import HomeLayout from "../components/HomeLayout";
-// import { RNWCreateWallet } from "rnw/src";
-// import { TWallet } from "rnw/src/types";
 
 export default function Page() {
   // const [createdWallet, setCreatedWallet] = useState<TWallet>();
@@ -25,11 +23,11 @@ export default function Page() {
         CREW
       </Text>
       <View className="flex-row w-full justify-center">
-        <LinkButton
+        {/* <LinkButton
           title="Create wallet"
           href="/create"
           onPress={() => createWallet()}
-        />
+        /> */}
       </View>
     </HomeLayout>
   );
