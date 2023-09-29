@@ -2,8 +2,8 @@ import React from "react";
 import { Pressable, Text, View } from "react-native";
 import * as Haptics from "expo-haptics";
 import { Feather } from "@expo/vector-icons";
-import { TKeyboardValue } from "../../types";
-import { ACTION, NUMBER } from "../../constants";
+import { TKeyboardValue } from "../../src/types";
+import { ACTION, NUMBER } from "../../src/constants";
 
 interface IKeyboard {
   proccessInputAmount: (value: TKeyboardValue) => void;

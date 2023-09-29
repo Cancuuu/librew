@@ -5,8 +5,8 @@ import * as Haptics from "expo-haptics";
 import { FontAwesome } from "@expo/vector-icons";
 import { Paragraph } from "../../components/Text";
 import Keyboard from "../../components/Keyboard";
-import { TKeyboardValue } from "../../types";
-import { ACTION, NUMBER } from "../../constants";
+import { TKeyboardValue } from "../../src/types";
+import { ACTION, NUMBER } from "../../src/constants";
 
 const DEFAULT_WHOLE_AMOUNT = "0";
 const DEFAULT_DECIMAL_AMOUNT = "0";

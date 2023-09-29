@@ -20,7 +20,7 @@ function SvgComponent(props) {
       {...props}
       style={{
         position: "absolute",
-        left: -20,
+        left: -23,
         top: -20,
         shadowColor: "#000",
         shadowOffset: {
